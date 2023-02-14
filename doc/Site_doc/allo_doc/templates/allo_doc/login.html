@@ -1,0 +1,28 @@
+{% extends 'allo_doc/base.html' %}
+
+{% comment %} ------------LOGIN---------- {% endcomment %}
+
+{% block content %}
+<div class="text-center">
+<h2 class="m-5">Se connecter</h2>
+
+
+<p>{{ message }}</p>
+<form method="post">
+
+        {{ form.as_table }}
+        {% csrf_token %}
+        <br>
+    <button type="submit" class="btn btn-primary m-4" >Se connecter</button>
+
+    
+</form>
+
+<p>Vous êtes connecté en tant que {{ request.user }}. <a href="{% url 'logout' %}">Se déconnecter</a></p>
+
+
+<p>Pas encore membre ? <a href="{% url 'signup' %}">Inscrivez-vous maintenant !</a></p>
+
+</div>
+{% endblock %}
+

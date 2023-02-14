@@ -1,0 +1,27 @@
+{% extends 'allo_doc/base.html' %}
+
+{% block content %}
+    <h1>Liste des notes</h1>
+    <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Jour RDV</th>
+            <th >Note</th>
+            {% comment %} <th>Actions</th> {% endcomment %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for note in notes %}
+          <tr>
+            <td>{{ note.nom }}</td>
+            <td>{{ note.prenom }}</td>
+            <td>{{ note.jour_rdv }}</td>
+            <td ><pre>{{ note.note }}</pre></td>
+            {% comment %} <td><a href="{% url 'modifier_note' note.id %}" class="btn btn-info">Modifier</a></td> {% endcomment %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'allo_doc/base.html' %}
+
+{% block content %}
+
+<table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Prénom</th>
+        <th>Date</th>
+        <th>Heure</th>
+        {% comment %} <th>Note</th> {% endcomment %}
+        {% comment %} <th>Durée</th> {% endcomment %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for appointment in appointments|dictsort:'date' %}
+      {% if appointment.nom %}
+        <tr>
+          <td>{{ appointment.nom }}</td>
+          <td>{{ appointment.prenom }}</td>
+          <td>{{ appointment.date }}</td>
+          <td>{{ appointment.time }}</td>
+          {% comment %} <td><a href="{% url 'note' appointment.id %}" class="btn btn-primary">Note</a></td> {% endcomment %}
+          <td><a href="{% url 'note' %}" class="btn btn-primary">  note</a></td>
+
+          {% comment %} <td>{{ appointment.duration }}</td> {% endcomment %}
+        </tr>
+      {% endif %}
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
